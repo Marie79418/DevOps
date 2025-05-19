@@ -49,3 +49,21 @@ Multi-stage build allows you to have a clean, optimized, secure, and production-
 | `COPY pom.xml .`                            | Copies the `pom.xml` file into the container.        |
 | `COPY src ./src`                            | Copies the project source code.                                                                    |
 | `RUN mvn package -DskipTests`               | Compiles the project and builds a `.jar` file in `target/`, skipping tests.                        |
+
+## 1-5 Why do we need a reverse proxy?
+
+1-5 Why do we need a reverse proxy?
+Reasons for using a reverse proxy like Apache or Nginx include:
+Security, as a shield between clients and the backend server: requests can be filtered, blocked, and redirected.
+
+Backend Hiding
+Clients only interact with the reverse proxy. The backend can be hidden and protected, even on another network.
+
+Load Balancing
+A reverse proxy can distribute requests between multiple backend servers.
+
+SSL Termination (HTTPS)
+It manages SSL encryption to relieve backend applications.
+
+URL Rewriting / Redirections
+It can rewrite paths, redirecting to different microservices depending on the routes (/api, /admin, etc.).
