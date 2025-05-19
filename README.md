@@ -42,10 +42,10 @@ Multi-stage build allows you to have a clean, optimized, secure, and production-
 
 | Line                                      | Explanation                                                                                          |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------|
-| `FROM eclipse-temurin:21-jdk-alpine AS myapp-build` | Uses a full JDK image to compile Java (Spring Boot). The build stage is named `myapp-build`.       |
-| `ENV MYAPP_HOME=/opt/myapp`                | Declares an environment variable to avoid repeating the path in later commands.                    |
-| `WORKDIR $MYAPP_HOME`                       | Sets the working directory inside the image (all following commands run here).                     |
+| `FROM eclipse-temurin:21-jdk-alpine AS myapp-build` | Uses a full JDK image to compile Java (Spring Boot).       |
+| `ENV MYAPP_HOME=/opt/myapp`                | Declares an environment variable to avoid repeating the path later.                    |
+| `WORKDIR $MYAPP_HOME`                       | Sets the working directory inside the image, all the next commands run here.                     |
 | `RUN apk add --no-cache maven`              | Installs Maven using Alpine’s package manager (`apk`).                                             |
-| `COPY pom.xml .`                            | Copies the `pom.xml` file into the container (copied alone first to optimize Docker cache).        |
+| `COPY pom.xml .`                            | Copies the `pom.xml` file into the container.        |
 | `COPY src ./src`                            | Copies the project source code.                                                                    |
 | `RUN mvn package -DskipTests`               | Compiles the project and builds a `.jar` file in `target/`, skipping tests.                        |
