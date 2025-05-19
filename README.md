@@ -34,3 +34,18 @@ ENV POSTGRES_DB=db \
 * remove the container and not the volume : docker rm -f postgres_db
 
 * relauch the container with the volume : docker run -d --name postgres_db --network app-network -v ${PWD}/pgdata:/var/lib/postgresql/data mcatillon/postgres_custom
+
+## 1-4 Why do we need a multistage build? And explain each step of this dockerfile.
+
+A multi-stage build in Docker allows to separate the build (compilation) and execution (runtime) stages by using multiple Docker images in a single Dockerfile.  
+Multi-stage build allows you to have a clean, optimized, secure, and production-ready Docker image, while automating the compilation of the application without polluting the final image with development tools.
+
+| Line                                      | Explanation                                                                                          |
+|-------------------------------------------|----------------------------------------------------------------------------------------------------|
+| `FROM eclipse-temurin:21-jdk-alpine AS myapp-build` | Uses a full JDK image to compile Java (Spring Boot). The build stage is named `myapp-build`.       |
+| `ENV MYAPP_HOME=/opt/myapp`                | Declares an environment variable to avoid repeating the path in later commands.                    |
+| `WORKDIR $MYAPP_HOME`                       | Sets the working directory inside the image (all following commands run here).                     |
+| `RUN apk add --no-cache maven`              | Installs Maven using Alpine’s package manager (`apk`).                                             |
+| `COPY pom.xml .`                            | Copies the `pom.xml` file into the container (copied alone first to optimize Docker cache).        |
+| `COPY src ./src`                            | Copies the project source code.                                                                    |
+| `RUN mvn package -DskipTests`               | Compiles the project and builds a `.jar` file in `target/`, skipping tests.                        |
