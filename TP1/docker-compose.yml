@@ -1,36 +1,36 @@
-services:
-  backend:
-    build:
-      context: backend_api/demo
-    networks:
-      - app-network
+services:       # Definition of services (containers)
+  backend:        # backend: API Spring Boot (Java)
+    build:        # Indicates how to build the container image
+      context: backend_api/demo # Path to the Dockerfile
+    networks:     
+      - app-network       # Connects the backend to the internal network "app-network"
     depends_on:
-      - database
+      - database        #Sets the services to start before this container
  
   database:
     build:
       context: ./database
-    environment:
+    environment:              # Environment variables for the database
       POSTGRES_DB: db
       POSTGRES_USER: usr
       POSTGRES_PASSWORD: pwd
-    volumes:
+    volumes:             # Volume to persist database data  
       - db-data:/var/lib/postgresql/data
-    networks:
+    networks:           # Connects the database to the internal network "app-network"
       - app-network
  
   httpd:
     build:
-      context: ./Http_server
+      context: ./Http_server    # Path to the Dockerfile
     ports:
-      - "80:80"
+      - "80:80"         # Port 80 of the host is redirected to port 80 of the container (Apache)
     networks:
-      - app-network
+      - app-network     # Connects the HTTP server to the internal network "app-network"
     depends_on:
-      - backend
+      - backend     # Sets the services to start before this container
  
-networks:
+networks:         # network created
   app-network:
  
-volumes:
-  db-data:
+volumes:        # volume created
+  db-data:    
