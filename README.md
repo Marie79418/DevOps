@@ -67,3 +67,25 @@ It manages SSL encryption to relieve backend applications.
 
 URL Rewriting / Redirections
 It can rewrite paths, redirecting to different microservices depending on the routes (/api, /admin, etc.).
+
+## ou 
+
+Un reverse proxy comme Apache ou Nginx agit comme point d’entrée unique pour toutes les requêtes entrantes. Il est essentiel dans ce contexte pour plusieurs raisons :
+
+Isolation & sécurité : Le backend (Spring Boot) et la base de données ne sont pas exposés directement à Internet.
+
+Simplification de l’accès : Les utilisateurs accèdent à localhost sans avoir à connaître les ports internes ou les chemins des services.
+
+Extensibilité : Permet d’ajouter facilement de la mise en cache, des certificats SSL, ou un équilibrage de charge (load balancing).
+
+Uniformisation : Il peut servir à la fois le front statique (index.html) et faire suivre les appels vers l’API.
+
+## 1-6 Why is docker-compose so important?
+
+Docker Compose allows you to define and manage multiple containers with a single command.
+
+In this lab, it's important because it simplifies the management of dependencies between services (depends_on, networks, volumes) and allows you to launch the entire architecture (backend, database, httpd) with a single command (docker-compose up).
+
+## 1-7 Document docker-compose most important commands.
+
+test

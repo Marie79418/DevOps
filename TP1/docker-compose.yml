@@ -1,0 +1,36 @@
+services:
+  backend:
+    build:
+      context: backend_api/demo
+    networks:
+      - app-network
+    depends_on:
+      - database
+ 
+  database:
+    build:
+      context: ./database
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+ 
+  httpd:
+    build:
+      context: ./Http_server
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+ 
+networks:
+  app-network:
+ 
+volumes:
+  db-data:
