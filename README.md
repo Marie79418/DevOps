@@ -88,11 +88,11 @@ In this lab, it's important because it simplifies the management of dependencies
 
 ## 1-7 Document docker-compose most important commands.
 
-docker-compose up -> Start all defined services.
-docker-compose up --build -> Rebuilds images before booting
-docker-compose down -> Stops and deletes containers, networks, temporary volumes
-docker-compose ps -> Lists containers managed by Compose
-docker-compose logs (-f) -> Displays logsfor debugging (in live with -f)
+docker-compose up -> Start all defined services.  
+docker-compose up --build -> Rebuilds images before booting  
+docker-compose down -> Stops and deletes containers, networks, temporary volumes  
+docker-compose ps -> Lists containers managed by Compose  
+docker-compose logs (-f) -> Displays logsfor debugging (in live with -f)  
 
 ## 1-8 Document your docker-compose file.
 
@@ -100,14 +100,14 @@ File commented directly on the code
 
 ## 1-9 Document your publication commands and published images in dockerhub
 
-What I did :
-`docker tag mcatillon/postgres_custom mcatillon/mcatillon/postgres_custom:1.0`
-`docker tag springboot-api mcatillon/springboot-api:1.0`
-`docker tag my-http-server mcatillon/my-http-server:1.0`
-
-`docker push mcatillon/mcatillon/postgres_custom:1.0`
-`docker push emcatillon/springboot-api:1.0`
-`docker push mcatillon/my-http-server:1.0`
+What I did :  
+`docker tag mcatillon/postgres_custom mcatillon/mcatillon/postgres_custom:1.0`  
+`docker tag springboot-api mcatillon/springboot-api:1.0`  
+`docker tag my-http-server mcatillon/my-http-server:1.0`  
+  
+`docker push mcatillon/mcatillon/postgres_custom:1.0`  
+`docker push emcatillon/springboot-api:1.0`  
+`docker push mcatillon/my-http-server:1.0`  
 
 ## 1-10 Why do we put our images into an online repo?
 
