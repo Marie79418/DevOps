@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: TP1/correction/database
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mcatillon/postgres_custom:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/postgres_custom:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build image and push httpd
