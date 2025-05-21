@@ -41,7 +41,7 @@ jobs:
       - name: Build image and push backend
         uses: docker/build-push-action@v6
         with:
-          context: ./simple-api
+          context: TP1/correction/simple-api
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/springboot-api:latest
           push: ${{ github.ref == 'refs/heads/main' }}
 
