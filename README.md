@@ -101,14 +101,23 @@ File commented directly on the code
 ## 1-9 Document your publication commands and published images in dockerhub
 
 What I did :  
-`docker tag mcatillon/postgres_custom mcatillon/mcatillon/postgres_custom:1.0`  
+`docker tag mcatillon/postgres_custom mcatillon/postgres_custom:1.0`  
 `docker tag springboot-api mcatillon/springboot-api:1.0`  
 `docker tag my-http-server mcatillon/my-http-server:1.0`  
   
-`docker push mcatillon/mcatillon/postgres_custom:1.0`  
+`docker push mcatillon/postgres_custom:1.0`  
 `docker push emcatillon/springboot-api:1.0`  
 `docker push mcatillon/my-http-server:1.0`  
 
 ## 1-10 Why do we put our images into an online repo?
 
 Publishing images to a registry like Docker Hub allows for sharing and collaboration with others who can pull the images. It also allows for automatic depoting with CI/CD servers. Finally, tags allow for version management of builts.
+
+## 2-1 What are testcontainers?
+
+
+## 2-2 For what purpose do we need to use secured variables ?
+
+## 2-3 Why did we put needs: build-and-test-backend on this job? Maybe try without this and you will see!
+
+## 2-4 For what purpose do we need to push docker images?
