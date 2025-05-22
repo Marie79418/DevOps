@@ -2,6 +2,7 @@
   docker_container:
     name: database
     image: mcatillon/postgres_custom
+    pull: yes
     env:
       POSTGRES_PASSWORD: pwd
     volumes:

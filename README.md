@@ -111,7 +111,7 @@ What I did :
 
 ## 1-10 Why do we put our images into an online repo?
 
-Publishing images to a registry like Docker Hub allows for sharing and collaboration with others who can pull the images. It also allows for automatic depoting with CI/CD servers. Finally, tags allow for version management of builts.
+Publishing images to a registry allows to share and collaborate with others who can pull the images. It also allows for automatic depoting with CI/CD servers. Finally, tags allow for version management of builts. Here we can pull the images in the next step of the labs.
 
 ## 2-1 What are testcontainers?
 
