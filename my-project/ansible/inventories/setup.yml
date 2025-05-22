@@ -1,7 +1,7 @@
-all:
+all:        #Root group that encompasses all hosts
   vars:
-    ansible_user: admin
+    ansible_user: admin     # # Nom d'utilisateur utilisé pour se connecter aux hôtes via SSH
   children:
     prod:
       hosts:
-        marie.catillon.takima.cloud
+        marie.catillon.takima.cloud   # Hostname (or IP) of the target server in the "prod" group

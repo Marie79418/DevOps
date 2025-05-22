@@ -2,12 +2,12 @@
 - name: Install required packages
   apt:
     name:
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg
-      - lsb-release
-      - python3-venv
+      - apt-transport-https  # Required for HTTPS support
+      - ca-certificates      # SSL certificates
+      - curl                 # Tool for downloading files
+      - gnupg                # GPG key management
+      - lsb-release          # Get distribution info
+      - python3-venv         # Create Python virtual environments
     state: latest
     update_cache: yes
 
@@ -17,20 +17,20 @@
     url: https://download.docker.com/linux/debian/gpg
     state: present
 
-# Set up the Docker stable repository
+# Add Docker repository
 - name: Add Docker APT repository
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_facts['distribution_release'] }} stable"
     state: present
     update_cache: yes
 
-# Install Docker
+# Install Docker engine
 - name: Install Docker
   apt:
     name: docker-ce
     state: present
 
-# Install Python3 and pip3
+# Install Python and pip
 - name: Install Python3 and pip3
   apt:
     name:
@@ -38,17 +38,17 @@
       - python3-pip
     state: present
 
-# Create a virtual environment for Python packages
+# Create Python virtual environment
 - name: Create a virtual environment for Docker SDK
   command: python3 -m venv /opt/docker_venv
   args:
     creates: /opt/docker_venv
 
-# Install Docker SDK for Python in the virtual environment
+# Install Docker SDK in virtualenv
 - name: Install Docker SDK for Python in virtual environment
   command: /opt/docker_venv/bin/pip install docker
 
-# Ensure Docker is running
+# Ensure Docker service is running
 - name: Make sure Docker is running
   service:
     name: docker
