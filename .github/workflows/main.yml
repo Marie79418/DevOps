@@ -60,6 +60,7 @@ jobs:
           context: TP1/correction/http-server
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-http-server:latest
           push: ${{ github.ref == 'refs/heads/main' }}
+          
 
   deployement-continious-app:
     needs: test-backend
