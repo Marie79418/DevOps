@@ -28,6 +28,10 @@ jobs:
           cd TP1/correction/simple-api
           mvn clean verify
           mvn -B verify sonar:sonar -Dsonar.projectKey=Marie79418_DevOps -Dsonar.organization=marie79418 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: Built and test ansible_facts
+        run: |
+          cd my-project/ansible_facts
+          ansible-playbook -i inventories/setup.yml playbook.yml
 
   build-and-push-docker-image:
     needs: test-backend
