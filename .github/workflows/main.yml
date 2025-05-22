@@ -63,7 +63,7 @@ jobs:
           
 
   deployement-continious-app:
-    needs: test-backend
+    needs: build-and-push-docker-image
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
