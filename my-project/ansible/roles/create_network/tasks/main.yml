@@ -1,0 +1,6 @@
+# roles/docker_network/tasks/main.yml
+- name: Create Docker network
+  docker_network:
+    name: my-network
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python

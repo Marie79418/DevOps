@@ -1,0 +1,12 @@
+- name: Run HTTP proxy container
+  docker_container:
+    name: httpd
+    image: mcatillon/my-http-server
+    ports:
+      - "80:80"
+    networks:
+      - name: my-network
+    restart_policy: always
+    state: started
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python

@@ -1,0 +1,13 @@
+- name: Run API application container
+  docker_container:
+    name: simple-api
+    image: mcatillon/springboot-api
+    env:
+      DATABASE_HOST: database
+      DATABASE_PASSWORD: pwd
+    networks:
+      - name: my-network
+    restart_policy: always
+    state: started
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python

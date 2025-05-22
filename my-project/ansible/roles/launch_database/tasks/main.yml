@@ -1,0 +1,17 @@
+- name: Run database container
+  docker_container:
+    name: database
+    image: mcatillon/postgres_custom
+    env:
+      POSTGRES_PASSWORD: pwd
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+    networks:
+      - name: my-network
+    purge_networks: true
+    restart_policy: always
+    state: started
+    container_default_behavior: compatibility
+    networks_cli_compatible: yes
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
